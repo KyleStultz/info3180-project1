@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+{% include 'flash_messages.html' %}
+
+<div class="full_container">
+    <div class="pic">
+        <img src="{{ url_for('get_image', filename=current_property.photo)}}" alt="Photo of Property {{ current_property.propertyid }}">
+    </div>
+    <div class="full_description">
+        <div class="title">
+            <h2>{{ current_property.propertytitle}}</h2>
+        </div>
+        <div class="to_colour">
+            <h5 class="price">${{ current_property.propertyprice}}</h5>
+            <h5 class="type">{{ current_property.propertytype}}</h5>
+        </div>
+        <div class="description">
+            <p>{{ current_property.propertydescription}}</p>
+        </div>
+        <div class="align">
+            <div class="set">
+                <img src="{{ url_for('static', filename='/bedroom.png')}}" alt="Room Icon">
+                <span>{{ current_property.numberofbedroom }} Bedroom</span>
+            </div>
+            <div class="set">
+                <img src="{{url_for('static', filename='/shower.png')}}" alt="Bath Icon">
+                <span>{{ current_property.numberofbathroom}} Bathroom</span>
+            </div>
+        </div>
+        <div class="set" id="location">
+            <img src="{{ url_for('static', filename='/location.png')}}" alt="Map Icon">
+            <span>{{ current_property.propertylocation}}</span>
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary">Email Realtor</button>
+
+    </div>
+</div>
+
+{% endblock %}
